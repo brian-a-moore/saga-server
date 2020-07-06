@@ -8,7 +8,7 @@ const lib = require('../../lib');
 // Middleware
 chai.use(chaiHttp);
 
-describe.only('Tag', function() {
+describe('Tag', function() {
 
     before(async function() { await lib.build() });
     after(async function() { await lib.tearDown() });
@@ -16,8 +16,7 @@ describe.only('Tag', function() {
     describe('Create', function() {
 
         const tag = {
-            title: 'A Tag',
-            aliases: ['Tags', 'Tagging', 'Tagger']
+            title: 'A Tag'
         };
 
         it('should create', function(done) {

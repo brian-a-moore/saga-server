@@ -4,10 +4,8 @@ module.exports = [{
     email: 'john.doe@email.com',
     password: '$2b$10$qZS9Q3VBPuGXoJ6VtaBUuOyDeZpumKcw6gyU9DHhyI6bnVWrokuEC',
     pin: '0000',
-    darkMode: false,
     summaryLength: 10,
     timestampBefore: true,
-    avatar: null,
     createdAt: '2020-01-01 00:00:00',
     updatedAt: '2020-01-01 00:00:00'
 },{
@@ -16,10 +14,8 @@ module.exports = [{
     email: 'jane.smith@email.com',
     password: '$2b$10$qZS9Q3VBPuGXoJ6VtaBUuOyDeZpumKcw6gyU9DHhyI6bnVWrokuEC',
     pin: '0000',
-    darkMode: false,
     summaryLength: 10,
     timestampBefore: true,
-    avatar: null,
     createdAt: '2020-01-01 00:00:00',
     updatedAt: '2020-01-01 00:00:00'
 }];

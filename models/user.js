@@ -23,18 +23,13 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         darkMode: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false
+            type: DataTypes.BOOLEAN
         },
         summaryLength: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 10
+            type: DataTypes.INTEGER
         },
         timestampBefore: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: true
+            type: DataTypes.BOOLEAN
         },
         defaultBackgroundColor: {
             type: DataTypes.STRING(7)
@@ -49,14 +44,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BLOB
         }
     }, {
-        tableName: 'users',
-        hooks: {
-            beforeCreate: user => {
-                if(!user.darkMode === undefined || !user.darkMode === null) user.darkMode = false;
-                if(!user.summaryLength === undefined || !user.summaryLength === null) user.summaryLength = 10;
-                if(!user.timestampBefore === undefined || !user.timestampBefore === null) user.timestampBefore = true;
-            }
-        }
+        tableName: 'users'
     });
 
     User.associate = models => {
