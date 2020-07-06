@@ -1,7 +1,8 @@
-let goal_types = require('../assets/seeds/goal_types');
-let moods = require('../assets/seeds/moods');
-let ratings = require('../assets/seeds/ratings');
-let fonts = require('../assets/seeds/fonts');
+let goal_types = require('../assets/goal_types');
+let moods = require('../assets/moods');
+let ratings = require('../assets/ratings');
+let fonts = require('../assets/fonts');
+let textures = require('../assets/textures');
 
 module.exports = {
     up: queryInterface => {
@@ -9,7 +10,8 @@ module.exports = {
             queryInterface.bulkInsert('saga_fonts', fonts, {}),
             queryInterface.bulkInsert('saga_goal_types', goal_types, {}),
             queryInterface.bulkInsert('saga_moods', moods, {}),
-            queryInterface.bulkInsert('saga_ratings', ratings, {})
+            queryInterface.bulkInsert('saga_ratings', ratings, {}),
+            queryInterface.bulkInsert('saga_textures', textures, {})
         ]);
     },
     down: queryInterface => {
@@ -17,7 +19,8 @@ module.exports = {
             queryInterface.bulkDelete('saga_fonts', null, {}),
             queryInterface.bulkDelete('saga_goal_types', null, {}),
             queryInterface.bulkDelete('saga_moods', null, {}),
-            queryInterface.bulkDelete('saga_ratings', null, {})
+            queryInterface.bulkDelete('saga_ratings', null, {}),
+            queryInterface.bulkDelete('saga_textures', null, {})
         ]);
     }
 };

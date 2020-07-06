@@ -16,20 +16,23 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(2048),
             allowNull: false
         },
-        backgroundColor: {
-            type: DataTypes.STRING(7)
-        },
-        fontId: {
+        moodId: {
             type: DataTypes.INTEGER
         },
-        moodId: {
+        ratingId: {
             type: DataTypes.INTEGER
         },
         typeId: {
             type: DataTypes.INTEGER
         },
-        ratingId: {
-            type: DataTypes.INTEGER
+        backgroundColor: {
+            type: DataTypes.STRING(7)
+        },
+        textureId: {
+            type: DataTypes.STRING(128)
+        },
+        fontId: {
+            type: DataTypes.STRING(128)
         }
     }, {
         tableName: 'entries'
@@ -40,17 +43,20 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'userId',
             onDelete: 'CASCADE'
         });
-        Entry.belongsTo(models.Font, {
-            foreignKey: 'fontId'
-        });
         Entry.belongsTo(models.Mood, {
             foreignKey: 'moodId'
+        });
+        Entry.belongsTo(models.Rating, {
+            foreignKey: 'ratingId'
         });
         Entry.belongsTo(models.GoalType, {
             foreignKey: 'typeId'
         });
-        Entry.belongsTo(models.Rating, {
-            foreignKey: 'ratingId'
+        Entry.belongsTo(models.Texture, {
+            foreignKey: 'textureId'
+        });
+        Entry.belongsTo(models.Font, {
+            foreignKey: 'fontId'
         });
         Entry.hasMany(models.MapGoal, { foreignKey: 'entryId', onDelete: 'CASCADE' });
         Entry.hasMany(models.MapTag, { foreignKey: 'entryId', onDelete: 'CASCADE' });

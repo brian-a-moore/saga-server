@@ -36,11 +36,14 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             defaultValue: true
         },
-        defaultFontId: {
-            type: DataTypes.INTEGER
-        },
         defaultBackgroundColor: {
             type: DataTypes.STRING(7)
+        },
+        defaultTexture: {
+            type: DataTypes.STRING(128)
+        },
+        defaultFont: {
+            type: DataTypes.STRING(128)
         },
         avatar: {
             type: DataTypes.BLOB
@@ -58,7 +61,10 @@ module.exports = (sequelize, DataTypes) => {
 
     User.associate = models => {
         User.belongsTo(models.Font, {
-            foreignKey: 'defaultFontId'
+            foreignKey: 'defaultFont'
+        });
+        User.belongsTo(models.Texture, {
+            foreignKey: 'defaultTexture'
         });
         User.hasMany(models.Entry, { foreignKey: 'userId', onDelete: 'CASCADE' });
         User.hasMany(models.Goal, { foreignKey: 'userId', onDelete: 'CASCADE' });
