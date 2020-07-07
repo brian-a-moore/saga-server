@@ -29,6 +29,11 @@ module.exports = {
         seeded: `Database seeded.`,
         sync: `Models synced.`,
     },
+    entry: {
+        created: `Entry created.`,
+        deleted: `Entry deleted.`,
+        updated: `Entry updated.`
+    },
     goal: {
         alreadyExists: `A goal with that title already exists.`,
         created: `Goal created.`,
