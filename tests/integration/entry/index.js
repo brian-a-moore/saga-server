@@ -53,6 +53,7 @@ describe('Entry', function() {
                 .query({ id })
                 .set('authorization', lib.token)
                 .send({ title: 'new title' });
+
             expect(res).to.have.status(200)
             expect(res.body.message).to.equal('Entry updated.');
 

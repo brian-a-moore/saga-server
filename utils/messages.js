@@ -65,6 +65,12 @@ module.exports = {
                 'string.max': 'Your password cannot exceed 128 characters',
                 'any.required': 'Your password is required'
             }
+        },
+        entry: {
+            backgroundColor: {
+                'string.base': 'Background color must be a valid hex color, ie: "#FFFFFF"',
+                'string.regex': 'Background color must be a valid hex color, ie: "#FFFFFF"'
+            }
         }
     },
     tag: {
