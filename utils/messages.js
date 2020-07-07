@@ -29,6 +29,12 @@ module.exports = {
         seeded: `Database seeded.`,
         sync: `Models synced.`,
     },
+    goal: {
+        alreadyExists: `A goal with that title already exists.`,
+        created: `Goal created.`,
+        deleted: `Goal deleted.`,
+        updated: `Goal updated.`
+    },
     permission: {
         alreadyExists: `An account with that e-mail address already exists.`,
         doesNotExist: `This user does not exist.`,
@@ -59,7 +65,7 @@ module.exports = {
     tag: {
         alreadyExists: `A tag with that name already exists.`,
         created: `Tag created.`,
-        deleted:  `Tag deleted.`,
+        deleted: `Tag deleted.`,
         updated: `Tag updated.`
     },
     token: {
