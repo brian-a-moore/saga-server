@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
 
 router.put('/', async (req, res) => {
     try {
-        let response = await ctrl.tag.update(req.userId, req.body);
+        let response = await ctrl.tag.update(req.userId, req.query.id, req.body);
 
         res.send(response);
     } catch(e) {
@@ -23,7 +23,7 @@ router.put('/', async (req, res) => {
 
 router.delete('/', async (req, res) => {
     try {
-        let response = await ctrl.tag.delete(req.userId);
+        let response = await ctrl.tag.delete(req.userId, req.query.id);
 
         res.send(response);
     } catch(e) {

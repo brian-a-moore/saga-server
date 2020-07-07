@@ -15,15 +15,12 @@ describe('Tag', function() {
 
     describe('Create', function() {
 
-        const tag = {
-            title: 'A Tag'
-        };
-
         it('should create', function(done) {
+
             chai.request(app)
                 .post('/api/tag')
                 .set('authorization', lib.token)
-                .send(tag) 
+                .send({ title: 'A tag' }) 
                 .end(function(err, res) {
                     try {
                         expect(err).to.be.null;
@@ -34,13 +31,15 @@ describe('Tag', function() {
                         done(err)
                     }
                 });
+
         });
 
         it('should not create if already exists', function(done) {
+
             chai.request(app)
                 .post('/api/tag')
                 .set('authorization', lib.token)
-                .send(tag) 
+                .send({ title: 'A tag' }) 
                 .end(function(err, res) {
                     try {
                         expect(err).to.be.null;
@@ -51,17 +50,64 @@ describe('Tag', function() {
                         done(err)
                     }
                 });
-            });
+
+        });
+        
     });
 
-    // describe('Update', async function() {
-    // });
+    describe('Update', function() {
 
-    // describe('Delete', function() {
+        it('should update the tag if it exists', async function() {
 
-    //     it('Should delete', function(done) {
-    //     });
+            let tags = await lib.models.Tag.findAll();
+            let id = tags[0].id;
+    
+            let res = await chai.request(app)
+                .put('/api/tag')
+                .query({ id })
+                .set('authorization', lib.token)
+                .send({ title: 'new title' });
+            expect(res).to.have.status(200)
+            expect(res.body.message).to.equal('Tag updated.');
 
-    // });
+        });
+
+        it('should not update the tag if the name already exists', async function() {
+
+            let tags = await lib.models.Tag.findAll();
+            let id = tags[0].id;
+    
+            let res = await chai.request(app)
+                .put('/api/tag')
+                .query({ id })
+                .set('authorization', lib.token)
+                .send({ title: 'new title' });
+
+            expect(res).to.have.status(402)
+            expect(res.body.message).to.equal('A tag with that name already exists.');
+
+        });
+
+    });
+
+    describe('Delete', function() {
+
+        it('Should delete tag', async function() {
+
+            let tags = await lib.models.Tag.findAll();
+            let id = tags[0].id;
+    
+            let res = await chai.request(app)
+                .delete('/api/tag')
+                .query({ id })
+                .set('authorization', lib.token)
+                .send();
+
+            expect(res).to.have.status(200)
+            expect(res.body.message).to.equal('Tag deleted.');
+
+        });
+
+    });
 
 });

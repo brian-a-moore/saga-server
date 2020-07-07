@@ -27,9 +27,9 @@ module.exports = async (req, res, next) => {
 // Handler
 const handler = (routeId, userId, params, body) => {
     switch(routeId) {
-        case 'POST/api/tag': return logic.tag(body.title);
+        case 'POST/api/tag': return logic.tag(userId, body.title);
         case 'POST/api/auth/signup': return logic.signup(body);
-        case 'PUT/api/tag': return logic.tag(body.title);
+        case 'PUT/api/tag': return logic.tag(userId, body.title);
         default: return { message: null, granted: true, status: null }; // Temporary!! default should ALWAYS be false
     };
 };

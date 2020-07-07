@@ -1,6 +1,7 @@
 // Dependencies 
 const models = require('../../models');
 const users = require('./users');
+const tags = require('./tags');
 var Sequelize = require('sequelize');
 var Op = Sequelize.Op;
 const _ = require('lodash');
@@ -31,5 +32,6 @@ module.exports = {
     },
     models,
     token: `Bearer ${jwt.createToken(users[0], process.env.SECRET, { expiresIn: process.env.EXP_TIME })}`,
-    users
+    users,
+    tags
 }

@@ -1,7 +1,7 @@
 const { Tag } = require('../../models');
 const { messages } = require('../../utils');
 
-module.exports = async ({ userId, id, tag }) => {
+module.exports = async (userId, id, tag) => {
     await Tag.update(tag, {
         where: {
             userId,
