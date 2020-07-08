@@ -1,11 +1,9 @@
-// Dependencies
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = chai.expect;
 const app = require('../../../app');
 const lib = require('../../lib');
 
-// Middleware
 chai.use(chaiHttp);
 
 describe('Entry', function() {
@@ -65,7 +63,7 @@ describe('Entry', function() {
 
         it('Should delete entry', async function() {
 
-            let entries = await lib.models.Entry.findAll();
+            let entries = await lib.models.Entry.findAll({ where: { title: 'new title' }});
             let id = entries[0].id;
     
             let res = await chai.request(app)

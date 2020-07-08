@@ -1,4 +1,3 @@
-// Dependencies
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = chai.expect;
@@ -6,7 +5,6 @@ const app = require('../../../app');
 const lib = require('../../lib');
 const moment = require('moment');
 
-// Middleware
 chai.use(chaiHttp);
 
 describe('Goal', function() {
@@ -17,7 +15,7 @@ describe('Goal', function() {
     describe('Create', function() {
 
         const goal = {
-            title: 'title',
+            title: 'goal',
             description: 'description',
             typeId: 1,
             targetDate: moment().format('YYYY-MM-DD HH:MM:ss')
@@ -67,14 +65,14 @@ describe('Goal', function() {
 
         it('should update the goal if it exists', async function() {
 
-            let goals = await lib.models.Goal.findAll();
+            let goals = await lib.models.Goal.findAll({ where: { title: 'goal' }});
             let id = goals[0].id;
     
             let res = await chai.request(app)
                 .put('/api/goal')
                 .query({ id })
                 .set('authorization', lib.token)
-                .send({ title: 'new title' });
+                .send({ title: 'new goal' });
             expect(res).to.have.status(200)
             expect(res.body.message).to.equal('Goal updated.');
 
@@ -89,7 +87,7 @@ describe('Goal', function() {
                 .put('/api/goal')
                 .query({ id })
                 .set('authorization', lib.token)
-                .send({ title: 'new title' });
+                .send({ title: 'new goal' });
 
             expect(res).to.have.status(402)
             expect(res.body.message).to.equal('A goal with that title already exists.');

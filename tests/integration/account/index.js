@@ -1,11 +1,9 @@
-// Dependencies
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = chai.expect;
 const app = require('../../../app');
 const lib = require('../../lib');
 
-// Middleware
 chai.use(chaiHttp);
 
 describe('Account', function() {

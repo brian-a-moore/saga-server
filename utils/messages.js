@@ -9,6 +9,11 @@ module.exports = {
     application: {
         online: (port, env) => `ONLINE: Port[${port}] Environment[${env}].`,
     },
+    attach: {
+        add: type => `${type.charAt(0).toUpperCase() + type.slice(1)} added.`,
+        alreadyExists: type => `This ${type} has already been attached to this entry.`,
+        remove: type => `${type.charAt(0).toUpperCase() + type.slice(1)} removed.`
+    },
     auth: {
         incorrectPassword: `The password you entered was incorrect.`,
         login: name => `Welcome back, ${name}!`,

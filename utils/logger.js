@@ -1,8 +1,6 @@
-// Dependencies
 const winston = require('winston');
 const { combine, timestamp, simple, colorize } = winston.format;
 
-// Levels
 const customLevels = {
     levels: {
         Error: 0,
@@ -26,10 +24,8 @@ const customLevels = {
     }
 }
 
-// Add Colors
 winston.addColors(customLevels.colors);
 
-// Winston Logger
 module.exports = winston.createLogger({
     level: 'Database',
     levels: customLevels.levels,

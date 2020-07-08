@@ -1,8 +1,10 @@
 module.exports = {
     'DELETE/api/account': require('./account/delete'),
+    'DELETE/api/attach': require('./attach/remove'),
     'DELETE/api/entry': require('./entry/delete'),
     'DELETE/api/goal': require('./goal/delete'),
     'DELETE/api/tag': require('./tag/delete'),
+    'POST/api/attach': require('./attach/add'),
     'POST/api/auth/login': require('./auth/login'),
     'POST/api/auth/signup': require('./auth/signup'),
     'POST/api/entry': require('./entry/create'),

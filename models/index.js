@@ -1,4 +1,3 @@
-// Dependencies
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -8,7 +7,6 @@ const db = {};
 const env = process.env.NODE_ENV;
 const { exec } = require("child_process");
 
-// Sequelize Options
 const options = {
     dialect: 'postgres',
     pool: {
@@ -20,7 +18,6 @@ const options = {
     logging: msg => logger.log({ level: 'Database', message: msg })
 }
 
-// Sequelize
 let sequelize = new Sequelize(
     `saga_${process.env.NODE_ENV}`,
     'saga',
@@ -28,11 +25,9 @@ let sequelize = new Sequelize(
     options
 );
 
-// Applying sequelize 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-// Reading Models
 fs.readdirSync(__dirname)
     .filter(file => {
         return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
@@ -42,17 +37,14 @@ fs.readdirSync(__dirname)
         db[model.name] = model;
     });
 
-// Setting Associations
 Object.keys(db).forEach(modelName => {
     if (db[modelName].associate) {
         db[modelName].associate(db);
     }
 });
 
-// Intialize Database
 db.init = async () => {
 
-    // Sequelize
     let rootsql = new Sequelize(
         'postgres',
         'postgres',
@@ -83,7 +75,6 @@ db.init = async () => {
     }
 }
 
-// Sequelize Startup
 db.startUp = async () => {
     try {
         await db.sequelize.authenticate();
@@ -105,7 +96,6 @@ db.startUp = async () => {
 
 };
 
-// Seeding database
 db.seed = async () => {
     let empty = await isEmpty();
     if(empty) {
@@ -124,7 +114,6 @@ db.seed = async () => {
     }
 };
 
-// Check if the database has already been seeded
 const isEmpty = async () => {
     let cnt = await db.GoalType.count();
 

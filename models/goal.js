@@ -43,7 +43,8 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'typeId'
         });
         Goal.belongsTo(models.Entry, {
-            foreignKey: 'entryId'
+            foreignKey: 'entryId',
+            onDelete: 'SET NULL'
         });
         Goal.hasMany(models.MapGoal, { foreignKey: 'goalId', onDelete: 'CASCADE' });
     }

@@ -1,8 +1,6 @@
-// Dependencies
 const Joi = require('@hapi/joi');
 const { messages } = require('../../../../utils');
 
-// Schema
 module.exports = Joi.object({
     query: Joi.object({}).options({ stripUnknown: true }),
     body: Joi.object({

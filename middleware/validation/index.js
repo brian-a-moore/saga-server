@@ -1,8 +1,6 @@
-// Dependencies
 const schemas = require('./schemas');
 const { logger } = require('../../utils');
 
-// Schema Validator
 module.exports = async (req, res, next) => {
     if(req.routeId === 'GET/' || !schemas[req.routeId]) next();
     else {

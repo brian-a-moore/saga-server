@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             primaryKey: true
         },
+        userId: {
+            type: DataTypes.UUID,
+            allowNull: false           
+        },
         entryId: {
             type: DataTypes.UUID,
             allowNull: false
@@ -21,9 +25,13 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     MapGoal.associate = models => {
+        MapGoal.belongsTo(models.User, {
+            foreignKey: 'userId',
+            onDelete: 'CASCADE'
+        });
         MapGoal.belongsTo(models.Entry, {
             foreignKey: 'entryId',
-            onDelete: 'CASCADE'
+            onDelete: 'SET NULL'
         });
         MapGoal.belongsTo(models.Goal, {
             foreignKey: 'goalId',
