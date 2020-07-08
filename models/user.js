@@ -23,13 +23,16 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         darkMode: {
-            type: DataTypes.BOOLEAN
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         },
         summaryLength: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            defaultValue: 10
         },
         timestampBefore: {
-            type: DataTypes.BOOLEAN
+            type: DataTypes.BOOLEAN,
+            defaultValue: true
         },
         defaultBackgroundColor: {
             type: DataTypes.STRING(7)

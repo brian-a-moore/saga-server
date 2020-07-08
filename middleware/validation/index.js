@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
         let { err, data } = await await schemas[req.routeId].validateAsync({ query: req.query, body: req.body });
 
         if(err) {
-            logger.log({ level: 'Info', message: err.message });
+            logger.log({ level: 'Validation', message: err.message });
             res.status(422).send({ message: err.message });        
         } else {
             let { query, body } = data;

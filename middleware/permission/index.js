@@ -31,6 +31,7 @@ const handler = (routeId, userId, params, body) => {
         case 'POST/api/auth/signup': return logic.signup(body);
         case 'POST/api/goal': return logic.goal(userId, body.title);
         case 'POST/api/tag': return logic.tag(userId, body.title);
+        case 'PUT/api/account': return logic.account(userId, body);
         case 'PUT/api/goal': return logic.goal(userId, body.title);
         case 'PUT/api/tag': return logic.tag(userId, body.title);
         default: return { message: null, granted: true, status: null }; // Temporary!! default should ALWAYS be false

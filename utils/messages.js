@@ -49,7 +49,9 @@ module.exports = {
         alreadyExists: `An account with that e-mail address already exists.`,
         doesNotExist: `This user does not exist.`,
         error: e => `Unable to validate permission: ${e}.`,
-        none: `You do not have permission to make this request.`
+        none: `You do not have permission to make this request.`,
+        samePassword: `Your password must be different from your previous password.`,
+        samePin: `Your PIN must be different from your previous PIN.`
     },
     schema: {
         auth: {
